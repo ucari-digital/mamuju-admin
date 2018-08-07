@@ -18,7 +18,12 @@ Route::get('/', function () {
 Route::get('login', 'AuthController@login');
 
 Route::get('berita', 'BeritaController@index');
+Route::post('berita/save', 'BeritaController@save');
 Route::get('berita/draft', 'BeritaController@draft');
+Route::get('berita/detail/{id}', 'BeritaController@detail');
+Route::get('berita/edit/{id}', 'BeritaController@edit');
+Route::post('berita/update/{id}', 'BeritaController@update');
+Route::get('berita/{id}/{status}', 'BeritaController@status');
 
 Route::get('kategori', 'KategoriController@index');
 Route::post('kategori/save', 'KategoriController@save');

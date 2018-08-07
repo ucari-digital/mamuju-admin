@@ -22,40 +22,44 @@
 	<div class="col-md-12 col-12">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<form class="row">
+				<h5 class="card-title">Buat Berita</h5>
+				<form method="post" action="{{url('berita/save')}}" enctype="multipart/form-data" class="row">
+					{{csrf_field()}}
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Judul</label>
-							<input class="form-control" placeholder="Judul Berita"></input>
+							<input name="judul" class="form-control" placeholder="Judul Berita">
 						</div>
 						<div class="form-group">
 							<label>Gambar</label>
-							<input type="file" name="img" class="file-upload-default">
-							<div class="input-group col-xs-12">
-								<input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
-								<span class="input-group-append">
-									<button class="file-upload-browse btn btn-info" type="button">Upload</button>
-								</span>
-							</div>
+							<input type="file" name="gambar" class="form-control">
+							{{--<input type="file" name="gambar" class="file-upload-default">--}}
+							{{--<div class="input-group col-xs-12">--}}
+								{{--<input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">--}}
+								{{--<span class="input-group-append">--}}
+									{{--<button class="file-upload-browse btn btn-info" type="button">Upload</button>--}}
+								{{--</span>--}}
+							{{--</div>--}}
 						</div>
 						<div class="form-group">
 							<label>Keterangan Gambar</label>
-							<input class="form-control" placeholder="Keterangan Gambar"></input>
+							<input name="keterangan_gambar" class="form-control" placeholder="Keterangan Gambar">
 						</div>
 						<div class="form-group">
 							<label>Kategori</label>
-							<select class="form-control">
-								<option>ABC</option>
+							<select name="kode_kategori" class="form-control">
+								@foreach(\App\Kategori::get_data() as $items)
+									<option value="{{$items->id}}">{{$items->nama_kategori}}</option>
+								@endforeach
 							</select>
 						</div>
 						<div class="form-group">
 							<label>Tags / Label</label>
-							<input type="text" name="" class="tags" data-role="tagsinput">
+							<input type="text" name="tags" class="tags" data-role="tagsinput">
 						</div>
 						<div class="form-group">
 							<label>Tgl Upload</label>
-							<input type="text" name="" class="form-control" placeholder="{{date('d-m-Y')}} 00:00 WIB">
+							<input type="text" name="tgl_upload" class="form-control" placeholder="{{date('Y-m-d H:i:s')}}">
 						</div>
 
 					</div>
@@ -63,9 +67,9 @@
 						<div class="form-group">
 							<label>Konten</label>
 							<div id="toolbar"></div>
-							<textarea class="form-control" id="text-editor" placeholder="Konten Berita"></textarea>
+							<textarea name="berita" class="form-control" id="text-editor" placeholder="Konten Berita"></textarea>
 						</div>
-						<button type="submit" class="btn btn-primary btn-block">Simpan</button>
+						<button class="btn btn-primary btn-block">Simpan</button>
 					</div>
 				</form>
 			</div>
