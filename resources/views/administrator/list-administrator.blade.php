@@ -11,29 +11,30 @@
 	<div class="col-md-12 col-12">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">Draft Berita</h5>
+				<h5 class="card-title">Daftar Administrator</h5>
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Judul</th>
-							<th>Kategori</th>
-							<th>Konten</th>
+							<th>Nama</th>
+							<th>Email</th>
+							<th>Posisi</th>
+							<th>Hak akses</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Banjir Mamuju Utara...</td>
-							<td>Domestik</td>
-							<td>Banjir yang mengakibatkan kerugian mencapai pulihan triliun rupiah ini akan terlus belanjut hinngga perbahan situasi</td>
+							<td>Dimas Adi Satria</td>
+							<td>dimss.satria@gmail.com</td>
+							<td>Editor</td>
+							<td>Administrator</td>
 							<td>
 								<div class="dropdown">
 									<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
 									</a>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										<a class="dropdown-item" href="#">Lihat</a>
-										<a class="dropdown-item" href="#">Publish</a>
+										<a class="dropdown-item" href="#">Non-aktifkan</a>
 										<a class="dropdown-item" href="#">Ubah</a>
 										<a class="dropdown-item" href="#">Hapus</a>
 									</div>

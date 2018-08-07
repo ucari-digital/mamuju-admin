@@ -157,11 +157,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                                <a class="nav-link" data-toggle="collapse" href="#berita" aria-expanded="false" aria-controls="berita">
                                     <span class="menu-title">Berita</span>
                                     <i class="icon-book-open menu-icon"></i>
                                 </a>
-                                <div class="collapse" id="auth">
+                                <div class="collapse" id="berita">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link" href="{{url('berita')}}">Buat baru</a></li>
                                         <li class="nav-item"> <a class="nav-link" href="{{url('berita/draft')}}">Draft</a></li>
@@ -169,8 +169,8 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/widgets.html">
-                                    <span class="menu-title">User</span>
+                                <a class="nav-link" href="{{url('pengguna')}}">
+                                    <span class="menu-title">Pengguna</span>
                                     <i class="icon-user menu-icon"></i>
                                 </a>
                             </li>
@@ -190,10 +190,16 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/widgets.html">
+                                <a class="nav-link" data-toggle="collapse" href="#administrator" aria-expanded="false" aria-controls="administrator">
                                     <span class="menu-title">Administrator</span>
-                                    <i class="icon-lock menu-icon"></i>
+                                    <i class="icon-book-open menu-icon"></i>
                                 </a>
+                                <div class="collapse" id="administrator">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator')}}">Akun baru</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator/daftar')}}">Daftar akun</a></li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </nav>

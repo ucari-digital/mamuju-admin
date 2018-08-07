@@ -18,12 +18,43 @@
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{url('css/style.css')}}">
-        @yield('header')
+        <style type="text/css">
+            @media only screen and (max-width: 600px){
+                .form-control{
+                    font-size: 16px !important;
+                }
+            }
+        </style>
         <!-- endinject -->
         <link rel="shortcut icon" href="images/favicon.png" />
     </head>
     <body>
-        l
+        <div class="container">
+            <div class="row justify-content-md-center mt-5">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                Masuk
+                            </h3>
+                            <form action="">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" name="" class="form-control" placeholder="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="text" name="" class="form-control" placeholder="password">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- container-scroller -->
         <!-- plugins:js -->
         <script src="{{url('js/jquery.min.js')}}"></script>
