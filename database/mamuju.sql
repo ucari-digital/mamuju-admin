@@ -45,6 +45,7 @@ DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE `kategori`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `is_deleted` ENUM("Y", "N") NOT NULL DEFAULT 'N',
   `created_by` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,

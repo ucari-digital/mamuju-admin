@@ -26,14 +26,15 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Buat Kategori</h5>
-				<form class="row">
+				<form method="post" action="{{url('kategori/save')}}" class="row">
+					{{csrf_field()}}
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Nama kategori</label>
-							<input class="form-control" placeholder="Nama Kategori"></input>
+							<input name="nama_kategori" class="form-control" placeholder="Nama Kategori">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary btn-block">Simpan</button>
+							<button class="btn btn-primary btn-block">Simpan</button>
 						</div>
 					</div>
 				</form>
@@ -55,9 +56,10 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($data as $row)
 							<tr>
 								<td>
-									Infografis
+									{{$row->nama_kategori}}
 								</td>
 								<td>
 									<div class="dropdown">
@@ -65,12 +67,13 @@
 											<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="#">Edit</a>
-											<a class="dropdown-item" href="#">Hapus</a>
+											<a class="dropdown-item" href="{{url('kategori/edit/'.$row->id)}}">Edit</a>
+											<a class="dropdown-item" href="{{url('kategori/hapus/'.$row->id)}}">Hapus</a>
 										</div>
 									</div>
 								</td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>

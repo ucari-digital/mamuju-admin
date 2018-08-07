@@ -21,6 +21,10 @@ Route::get('berita', 'BeritaController@index');
 Route::get('berita/draft', 'BeritaController@draft');
 
 Route::get('kategori', 'KategoriController@index');
+Route::post('kategori/save', 'KategoriController@save');
+Route::get('kategori/edit/{id}', 'KategoriController@edit');
+Route::post('kategori/update/{id}', 'KategoriController@update');
+Route::get('kategori/delete/{id}', 'KategoriController@delete');
 
 Route::get('administrator', 'AdministratorController@index');
 Route::get('administrator/list', 'AdministratorController@list');
