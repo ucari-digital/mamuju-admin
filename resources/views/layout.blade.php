@@ -31,7 +31,7 @@
                     <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo_mini.svg" alt="logo"></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-center">
-                    <p class="page-name d-none d-lg-block">Hi, Dave Mattew</p>
+                    <p class="page-name d-none d-lg-block">Hi, {{Auth::User()->name}}</p>
                     <ul class="navbar-nav ml-lg-auto">
 {{--                         <li class="nav-item dropdown mail-dropdown">
                             <a class="nav-link count-indicator" id="MailDropdown" href="#" data-toggle="dropdown">
@@ -131,7 +131,7 @@
                         </li> --}}
                         <li class="nav-item d-none d-sm-block profile-img">
                             <a class="nav-link profile-image" href="#">
-                                <img src="images/faces/face4.jpg" alt="profile-img">
+                                <img src="{{Auth::User()->avatar}}" alt="{{Auth::User()->avatar}}">
                                 <span class="online-status online bg-success"></span>
                             </a>
                         </li>
@@ -201,6 +201,11 @@
                                         <li class="nav-item"> <a class="nav-link" href="{{url('administrator/list')}}">Daftar akun</a></li>
                                     </ul>
                                 </div>
+                            </li>
+                            <li class="nav-item nav-category">
+                                <span class="nav-link">
+                                    <a class="btn btn-block btn-danger"  href="{{url('logout')}}">KELUAR AKUN</a>
+                                </span>
                             </li>
                         </ul>
                     </nav>

@@ -37,14 +37,15 @@
                             <h3 class="card-title">
                                 Masuk
                             </h3>
-                            <form action="">
+                            <form action="{{url('login')}}" method="post">
+                                {{csrf_field()}}
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="" class="form-control" placeholder="email">
+                                    <input type="text" name="email" class="form-control" placeholder="masukan email anda">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="text" name="" class="form-control" placeholder="password">
+                                    <input type="password" name="password" class="form-control" placeholder="masukan password anda">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-block">Masuk</button>
