@@ -32,7 +32,6 @@ class BeritaController extends Controller
         $simpan->keterangan_gambar = $request->keterangan_gambar;
         $simpan->berita = $request->berita;
         $simpan->tgl_upload = $request->tgl_upload;
-        $simpan->status = "draft";
         $simpan->save();
 
         return redirect()
