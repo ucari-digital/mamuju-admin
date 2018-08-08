@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Berita;
+use App\Model\Berita;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -41,9 +41,15 @@ class BeritaController extends Controller
 
 	public function draft()
 	{
-	    $data = Berita::get_data(["draft", "publish"]);
+	    $data = Berita::get_data(["draft"]);
 		return view('berita.draft', compact('data'));
 	}
+
+    public function list()
+    {
+        $data = Berita::get_data(['publish']);
+        return view('berita.list-berita', compact('data'));
+    }
 
     public function detail($id)
     {

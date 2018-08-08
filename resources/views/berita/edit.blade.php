@@ -32,14 +32,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Gambar</label>
-                                <input type="file" name="gambar" class="form-control">
-                                {{--<input type="file" name="gambar" class="file-upload-default">--}}
-                                {{--<div class="input-group col-xs-12">--}}
-                                {{--<input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">--}}
-                                {{--<span class="input-group-append">--}}
-                                {{--<button class="file-upload-browse btn btn-info" type="button">Upload</button>--}}
-                                {{--</span>--}}
-                                {{--</div>--}}
+                                <input type="file" name="gambar" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                    </span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Keterangan Gambar</label>
@@ -49,7 +48,7 @@
                                 <label>Kategori</label>
                                 <select name="kode_kategori" class="form-control">
                                     <option value="{{$data->id_kategori}}">{{$data->nama_kategori}}</option>
-                                    @foreach(\App\Kategori::get_data() as $items)
+                                    @foreach(\App\Model\Kategori::get_data() as $items)
                                         <option value="{{$items->id}}">{{$items->nama_kategori}}</option>
                                     @endforeach
                                 </select>

@@ -34,26 +34,23 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Akun Baru</h5>
-				<form class="row" action="{{url('administrator/save')}}" method="post" enctype="multipart/form-data">
+				<form class="row" action="{{url('administrator/update/'.$data->id)}}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Nama</label>
-							<input type="text" name="name" class="form-control" placeholder="Nama" value=""></input>
+							<input type="text" name="name" class="form-control" placeholder="Nama" value="{{$data->name}}"></input>
 						</div>
 						<div class="form-group">
 							<label>Email</label>
-							<input type="text" name="email" class="form-control" placeholder="Email" value=""></input>
-						</div>
-						<div class="form-group">
-							<label>Password</label>
-							<input type="password" name="password" class="form-control" placeholder="Password" value=""></input>
+							<input type="text" name="email" class="form-control" placeholder="Email" value="{{$data->email}}"></input>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Posisi</label>
 							<select name="position" class="form-control">
+								<option value="{{$data->position}}">{{$data->position}} - Posisi saat ini</option>
 								<option value="penulis">Penulis</option>
 								<option value="editor">Editor</option>
 							</select>
@@ -61,6 +58,7 @@
 						<div class="form-group">
 							<label>Hak akses</label>
 							<select name="role" class="form-control">
+								<option value="{{$data->role}}">{{$data->role}} - Hak akses saat ini</option>
 								<option value="writer">Writer</option>
 								<option value="administrator">Administrator</option>
 							</select>

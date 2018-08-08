@@ -165,6 +165,7 @@
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link" href="{{url('berita')}}">Buat baru</a></li>
                                         <li class="nav-item"> <a class="nav-link" href="{{url('berita/draft')}}">Draft</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="{{url('berita/list')}}">Daftar Berita</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -197,7 +198,7 @@
                                 <div class="collapse" id="administrator">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link" href="{{url('administrator')}}">Akun baru</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator/daftar')}}">Daftar akun</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator/list')}}">Daftar akun</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -240,6 +241,7 @@
         <script src="{{url('js/dashboard.js')}}"></script>
         <script src="{{url('js/selectize.min.js')}}"></script>
         <script src="{{url('js/datatables.min.js')}}"></script>
+        <script src="{{url('js/file-upload.js')}}"></script>
         <script src="https://cloud.tinymce.com/dev/tinymce.min.js"></script>
         <script type="text/javascript">
             tinymce.init({

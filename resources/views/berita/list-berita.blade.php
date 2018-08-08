@@ -11,7 +11,7 @@
 	<div class="col-md-12 col-12">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">Draft Berita</h5>
+				<h5 class="card-title">Daftar Berita</h5>
 				<table class="table">
 					<thead>
 						<tr>
@@ -40,7 +40,7 @@
 									</a>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 										<a class="dropdown-item" href="{{url('berita/detail/'.$row->id)}}">Lihat</a>
-										<a class="dropdown-item" href="{{url('berita/'.$row->id.'/publish')}}">Publish</a>
+										<a class="dropdown-item" href="{{url('berita/'.$row->id.'/draft')}}">Jadikan Draft</a>
 										<a class="dropdown-item" href="{{url('berita/edit/'.$row->id)}}">Ubah</a>
 										<a class="dropdown-item" href="{{url('berita/'.$row->id.'/delete')}}">Hapus</a>
 									</div>
