@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', 'DashboardController@index');
 
 Route::get('login', 'AuthController@login');
 
@@ -37,7 +35,7 @@ Route::get('administrator/list', 'AdministratorController@list');
 Route::get('administrator/edit/{id}', 'AdministratorController@edit');
 Route::get('administrator/save', 'AdministratorController@save');
 Route::post('administrator/update/{id}', 'AdministratorController@update');
-Route::match(['get', 'post'], 'administrator/{mode}/{id?}', 'AdministratorController@action')
-->where(['mode' => 'save|suspend']);
+Route::get('administrator/{mode}/{id?}', 'AdministratorController@status')
+->where(['mode' => 'delete|suspend']);
 
 Route::get('pengguna', 'PenggunaController@index');

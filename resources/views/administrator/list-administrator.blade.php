@@ -8,6 +8,17 @@
 @endsection
 @section('content')
 <div class="row">
+	<div class="col-md-12">
+		@if(session('status') == 'success')
+			<div class="alert alert-success" role="alert">
+				{{session('message')}}
+			</div>
+		@elseif(session('status') == 'failed')
+			<div class="alert alert-danger" role="alert">
+				{{session('message')}}
+			</div>
+		@endif
+	</div>
 	<div class="col-md-12 col-12">
 		<div class="card">
 			<div class="card-body">
@@ -57,13 +68,13 @@
 				<div class="container">
 					<div class="row justify-content-md-center">
 						<div class="col-md-12">
-							<a href="{{url('administrator/suspend/')}}#id" class="btn btn-secondary btn-block suspend">Nonaktifkan</a>
+							<a href="{{url('administrator/edit/')}}" class="btn btn-secondary btn-block edit">Ubah</a>
 						</div>
 						<div class="col-md-12 mt-2">
-							<a href="{{url('administrator/edit/')}}#id" class="btn btn-secondary btn-block edit">Ubah</a>
+							<a href="{{url('administrator/delete/')}}" class="btn btn-danger btn-block delete">Hapus</a>
 						</div>
 						<div class="col-md-12 mt-2">
-							<a href="{{url('administrator/delete/')}}#id" class="btn btn-secondary btn-block delete">Hapus</a>
+							<a href="{{url('administrator/suspend/')}}" class="btn btn-warning btn-block suspend">Nonaktifkan</a>
 						</div>
 					</div>
 				</div>
@@ -81,13 +92,13 @@
 		$('.btn-action').click(function(){
 			var id = $(this).data('id');
 			var suspend = $('.suspend').attr('href');
-			$('.suspend').attr('href', suspend.replace("#id", '/'+id));
+			$('.suspend').attr('href', '{{url('administrator/suspend')}}/'+id);
 
 			var edit = $('.edit').attr('href');
-			$('.edit').attr('href', edit.replace('#id', '/'+id));
+			$('.edit').attr('href', '{{url('administrator/edit/')}}/'+id);
 
 			var hapus = $('.delete').attr('href');
-			$('.delete').attr('href', hapus.replace('#id', '/'+id));
+			$('.delete').attr('href', '{{url('administrator/delete/')}}/'+id);
 		});
 	});
 </script>
