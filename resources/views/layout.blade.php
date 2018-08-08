@@ -151,7 +151,7 @@
                                 <span class="nav-link">GENERAL</span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="{{url('/')}}">
                                     <span class="menu-title">Dashboard</span>
                                     <i class="icon-speedometer menu-icon"></i>
                                 </a>
