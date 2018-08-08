@@ -165,7 +165,7 @@
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link" href="{{url('berita')}}">Buat baru</a></li>
                                         <li class="nav-item"> <a class="nav-link" href="{{url('berita/draft')}}">Draft</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('berita/list')}}">Daftar Berita</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="{{url('berita/list-berita')}}">Daftar Berita</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -198,7 +198,7 @@
                                 <div class="collapse" id="administrator">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"> <a class="nav-link" href="{{url('administrator')}}">Akun baru</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator/list')}}">Daftar akun</a></li>
+                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator/list-akun')}}">Daftar akun</a></li>
                                     </ul>
                                 </div>
                             </li>
