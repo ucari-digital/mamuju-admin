@@ -16,7 +16,9 @@ class AdministratorController extends Controller
 
     public function list()
     {
-    	$data = User::whereIn('role', ['writer', 'administrator'])->get();
+    	$data = User::whereIn('role', ['writer', 'administrator'])
+    	->where('status', '<>', 'delete')
+    	->get();
     	return view('administrator.list-administrator', compact('data'));
     }
 
@@ -80,27 +82,21 @@ class AdministratorController extends Controller
     	}
     }
 
-    public function action(Request $request, $mode, $id)
-    {	
-    	/**
-    	 * Suspend
-    	 */
-		if ($mode == 'suspend') {
-			self::status($id, $mode);
-		}   	
-    }
 
-
-    public static function status($id, $status)
+    public function status($mode, $id)
     {
     	try {
     		User::where('id', $id)
     		->update([
-    			'status' => $status
+    			'status' => $mode
     		]);
-    		return 'success';
+    		return redirect('administrator/list')
+	    	->with('status', 'success')
+	    	->with('message', 'Berhasil men'.$mode.' anggota');
     	} catch (\Exception $e) {
-    		return 'failed';
+    		return redirect('administrator/list')
+	    	->with('status', 'failed')
+	    	->with('message', 'Error : '.$e->getMessage());
     	}
     }
 }
