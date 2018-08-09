@@ -33,13 +33,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('kategori/update/{id}', 'KategoriController@update');
     Route::get('kategori/delete/{id}', 'KategoriController@delete');
 
-    Route::get('administrator', 'AdministratorController@index');
-    Route::get('administrator/list', 'AdministratorController@list');
-    Route::get('administrator/edit/{id}', 'AdministratorController@edit');
-    Route::get('administrator/save', 'AdministratorController@save');
-    Route::post('administrator/update/{id}', 'AdministratorController@update');
-    Route::get('administrator/{mode}/{id?}', 'AdministratorController@status')
-        ->where(['mode' => 'delete|suspend']);
+	Route::get('administrator', 'AdministratorController@index');
+	Route::get('administrator/list-akun', 'AdministratorController@list');
+	Route::get('administrator/edit/{id}', 'AdministratorController@edit');
+	Route::get('administrator/save', 'AdministratorController@save');
+	Route::post('administrator/update/{id}', 'AdministratorController@update');
+	Route::get('administrator/{mode}/{id?}', 'AdministratorController@status')
+	->where(['mode' => 'delete|suspend']);
 
-    Route::get('pengguna', 'PenggunaController@index');
+	Route::get('pengguna', 'PenggunaController@index');
+	Route::get('pengguna/{mode}/{id?}', 'PenggunaController@status')
+	->where(['mode' => 'active|suspend']);
 });

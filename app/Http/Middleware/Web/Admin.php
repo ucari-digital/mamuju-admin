@@ -22,7 +22,7 @@ class Admin
             } else {
                 return redirect()->guest('login');
             }
-        }elseif(Auth::User()->role == "admin"){
+        }elseif(Auth::User()->role == "administrator"){
             return $next($request);
         }else{
             return redirect()->guest('login');
