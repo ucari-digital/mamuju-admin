@@ -19,8 +19,7 @@ class BeritaController extends Controller
         $image = $request->gambar;
         $destination_path = 'images/berita';
 
-        $image_name = $seo.'.'.$image->getClientOriginalExtension();
-        $image->move($destination_path, $image_name);
+        $image_name = Storage::disk('public')->put($destination_path, $request->file('avatar'));
 
         $simpan = new Berita;
         $simpan->user_id = $this->get_auth_id();
