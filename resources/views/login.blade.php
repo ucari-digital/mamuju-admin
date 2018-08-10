@@ -32,6 +32,11 @@
         <div class="container">
             <div class="row justify-content-md-center mt-5">
                 <div class="col-md-4">
+                    @if(Session::has('info'))
+                    <div class="alert alert-warning" role="alert">
+                        {{Session::get('info')}}
+                    </div>
+                    @endif
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">
