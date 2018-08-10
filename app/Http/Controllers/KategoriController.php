@@ -17,6 +17,7 @@ class KategoriController extends Controller
     {
         $simpan = new Kategori;
         $simpan->nama_kategori = $request->nama_kategori;
+        $simpan->label_color = $request->label_color;
         $simpan->created_by = null;
         $simpan->save();
 
