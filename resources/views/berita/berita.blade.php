@@ -1,8 +1,12 @@
 @extends('layout')
 @section('header')
+<link rel="stylesheet" type="text/css" href="{{url('node_modules/cropperjs/dist/cropper.min.css')}}">
 <style type="text/css">
 	.file-upload-browse{
 		padding: 12.5px;
+	}
+	.cropper-container{
+		width: 100% !important;
 	}
 	@media only screen and (max-width: 600px){
 		.content-wrapper{
@@ -32,7 +36,8 @@
 						</div>
 						<div class="form-group">
 							<label>Gambar</label>
-							<input type="file" name="gambar" class="file-upload-default">
+							<input type="file" class="file-upload-default" id="crpr-upload">
+							<input type="hidden" name="image" id="image-base" value="">
 							<div class="input-group col-xs-12">
 								<input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
 								<span class="input-group-append">
@@ -75,8 +80,48 @@
 		</div>
 	</div>
 </div>
+<div class="modal crpr-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<img src="" id="crpr-image" class="img-fluid">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary mdl-close" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary crpr-btn">Crop</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal crpr-modal-preview" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<img src="" id="crpr-image-preview" class="img-fluid mx-auto d-block">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary mdl-close-preview" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary crpr-btn-preview-save">Simpan</button>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 @section('footer')
+<script type="text/javascript" src="{{url('node_modules/cropperjs/dist/cropper.min.js')}}"></script>
+<script type="text/javascript" src="{{url('js/mamuju.js')}}"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.tags').selectize({
@@ -88,6 +133,12 @@
 		            text: input
 		        }
 		    }
+		});
+		$('.mdl-close').click(function(){
+			$('.crpr-modal').hide();
+		});
+		$('.mdl-close-preview').click(function(){
+			$('.crpr-modal-preview').hide();
 		});
 	});
 </script>
