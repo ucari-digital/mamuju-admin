@@ -10,7 +10,6 @@ app/storage/
 public/storage
 public/hot
 public/node_modules
-public/images
 storage/*.key
 .env.*.php
 .env.php
