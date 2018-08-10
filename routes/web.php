@@ -21,7 +21,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function ()
     Route::get('berita', 'BeritaController@index');
     Route::post('berita/save', 'BeritaController@save');
     Route::get('berita/draft', 'BeritaController@draft');
-    Route::get('berita/list', 'BeritaController@list');
+    Route::get('berita/list-berita', 'BeritaController@list');
     Route::get('berita/detail/{id}', 'BeritaController@detail');
     Route::get('berita/edit/{id}', 'BeritaController@edit');
     Route::post('berita/update/{id}', 'BeritaController@update');

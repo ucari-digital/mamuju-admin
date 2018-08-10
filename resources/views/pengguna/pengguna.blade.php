@@ -29,9 +29,15 @@
 								<td>{{$item->email}}</td>
 								<td>{{$item->status}}</td>
 								<td>
-									<button type="button" class="btn social-btn btn-twitter btn-action" data-toggle="modal" data-id="{{$item->id}}" data-target="#exampleModal">
-										<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
-									</button>
+									<div class="dropdown">
+										<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
+										</a>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+											<a class="dropdown-item" href="{{url('pengguna/active/'.$item->id)}}">Aktifkan</a>
+											<a class="dropdown-item" href="{{url('pengguna/suspend/'.$item->id)}}">Nonaktifkan</a>
+										</div>
+									</div>
 								</td>
 							</tr>
 							@endforeach
@@ -42,45 +48,4 @@
 		</div>
 	</div>
 </div>
-<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Aksi</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="container">
-					<div class="row justify-content-md-center">
-						<div class="col-md-12 mt-2">
-							<a href="{{url(Auth::User()->role.'/pengguna/active/')}}" class="btn btn-success btn-block active">Aktifkan</a>
-						</div>
-						<div class="col-md-12 mt-2">
-							<a href="{{url(Auth::User()->role.'/pengguna/suspend/')}}" class="btn btn-warning btn-block suspend">Nonaktifkan</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
-@section('footer')
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.btn-action').click(function(){
-			var id = $(this).data('id');
-			var suspend = $('.suspend').attr('href');
-			$('.suspend').attr('href', '{{url(Auth::User()->role.'/pengguna/suspend')}}/'+id);
-
-			var active = $('.active').attr('href');
-			$('.active').attr('href', '{{url(Auth::User()->role.'/pengguna/active')}}/'+id);
-		});
-	});
-</script>
 @endsection

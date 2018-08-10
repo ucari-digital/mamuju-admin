@@ -208,8 +208,6 @@ class BeritaController extends Controller
                 'approved_by' => $approved_by,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
-
-        return redirect()
-            ->to(Auth::User()->role.'/berita/draft');
+        return redirect()->back();
     }
 }
