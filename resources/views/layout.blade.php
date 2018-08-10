@@ -235,7 +235,8 @@
         </div>
         <!-- container-scroller -->
         <!-- plugins:js -->
-        <script src="{{url('js/jquery.min.js')}}"></script>
+        {{-- <script src="{{url('js/jquery.min.js')}}"></script> --}}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="{{url('js/popper.min.js')}}"></script>
         <script src="{{url('js/bootstrap.min.js')}}"></script>
         <!-- endinject -->

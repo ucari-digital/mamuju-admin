@@ -116,7 +116,6 @@ class BeritaController extends Controller
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
 
-        return redirect()
-            ->to('berita/draft');
+        return redirect()->back();
     }
 }
