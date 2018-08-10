@@ -56,7 +56,7 @@
                                 <label>Konten</label>
                                 {!! $data->berita !!}
                             </div>
-                            <a href="{{url('berita/draft')}}" class="btn btn-primary btn-block">Kembali</a>
+                            <a href="{{url(Auth::User()->role.'/berita/draft')}}" class="btn btn-primary btn-block">Kembali</a>
                         </div>
                     </form>
                 </div>

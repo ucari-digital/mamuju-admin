@@ -15,41 +15,47 @@
 				<table class="table">
 					<thead>
 						<tr>
+							<th>#</th>
 							<th>Judul</th>
 							<th>Kategori</th>
 							<th>Konten</th>
-							<th>Aksi</th>
+							@if(Auth::User()->role == "administrator")<th>Aksi</th>@endif
 						</tr>
 					</thead>
 					<tbody>
 						@php
 						$render = '';
 						@endphp
-						@foreach($data as $row)
+						@foreach($data as $no => $row)
 						@php
 						$render = html_entity_decode($row->berita);
 						@endphp
 						<tr>
+							<td>{{$no+1}}.</td>
 							<td>{{ str_limit($row->judul, 50)}}</td>
 							<td>{{$row->nama_kategori}}</td>
 							<td id="{{$row->id}}"><?php echo str_limit($render, 200, '...'); ?></td>
-							<td>
-								<div class="dropdown">
-									<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
-									</a>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										<a class="dropdown-item" href="{{url('berita/detail/'.$row->id)}}">Lihat</a>
-										<a class="dropdown-item" href="{{url('berita/'.$row->id.'/draft')}}">Jadikan Draft</a>
-										<a class="dropdown-item" href="{{url('berita/edit/'.$row->id)}}">Ubah</a>
-										<a class="dropdown-item" href="{{url('berita/'.$row->id.'/delete')}}">Hapus</a>
+							@if(Auth::User()->role == "administrator")
+								<td>
+									<div class="dropdown">
+										<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
+										</a>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/detail/'.$row->id)}}">Lihat</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/'.$row->id.'/draft')}}">Jadikan Draft</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/edit/'.$row->id)}}">Ubah</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/'.$row->id.'/delete')}}">Hapus</a>
+										</div>
 									</div>
-								</div>
-							</td>
+								</td>
+							@endif
 						</tr>
-						<script type="text/javascript">
-							var $('#{{$row->id}}').html();
-						</script>
+						@if(Auth::User()->role == "administrator")
+							<script type="text/javascript">
+								var $('#{{$row->id}}').html();
+							</script>
+						@endif
 						@endforeach
 					</tbody>
 				</table>

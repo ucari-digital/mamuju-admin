@@ -33,105 +33,105 @@
                 <div class="navbar-menu-wrapper d-flex align-items-center">
                     <p class="page-name d-none d-lg-block">Hi, {{Auth::User()->name}}</p>
                     <ul class="navbar-nav ml-lg-auto">
-{{--                         <li class="nav-item dropdown mail-dropdown">
-                            <a class="nav-link count-indicator" id="MailDropdown" href="#" data-toggle="dropdown">
-                                <i class="icon-envelope-letter icons"></i>
-                                <span class="count bg-danger"></span>
-                            </a>
-                            <div class="dropdown-menu navbar-dropdown mail-notification dropdownAnimation" aria-labelledby="MailDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <div class="sender-img">
-                                        <img src="images/faces/face6.jpg" alt="">
-                                        <span class="badge badge-success">&nbsp;</span>
-                                    </div>
-                                    <div class="sender">
-                                        <p class="Sende-name">John Doe</p>
-                                        <p class="Sender-message">Hey, We have a meeting planned at the end of the day.</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <div class="sender-img">
-                                        <img src="images/faces/face2.jpg" alt="">
-                                        <span class="badge badge-success">&nbsp;</span>
-                                    </div>
-                                    <div class="sender">
-                                        <p class="Sende-name">Leanne Jones</p>
-                                        <p class="Sender-message">Can we schedule a call this afternoon?</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <div class="sender-img">
-                                        <img src="images/faces/face3.jpg" alt="">
-                                        <span class="badge badge-primary">&nbsp;</span>
-                                    </div>
-                                    <div class="sender">
-                                        <p class="Sende-name">Stella</p>
-                                        <p class="Sender-message">Great presentation the other day. Keep up the good work!</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <div class="sender-img">
-                                        <img src="images/faces/face4.jpg" alt="">
-                                        <span class="badge badge-warning">&nbsp;</span>
-                                    </div>
-                                    <div class="sender">
-                                        <p class="Sende-name">James Brown</p>
-                                        <p class="Sender-message">Need the updates of the project at the end of the week.</p>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item view-all">View all</a>
-                            </div>
-                        </li> --}}
-{{--                         <li class="nav-item dropdown notification-dropdown">
-                            <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                                <i class="icon-speech icons"></i>
-                                <span class="count"></span>
-                            </a>
-                            <div class="dropdown-menu navbar-dropdown preview-list notification-drop-down dropdownAnimation" aria-labelledby="notificationDropdown">
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon">
-                                            <i class="icon-info mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject font-weight-medium">Application Error</p>
-                                        <p class="font-weight-light small-text">
-                                            Just now
-                                        </p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon">
-                                            <i class="icon-speech mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject">Settings</p>
-                                        <p class="font-weight-light small-text">
-                                            Private message
-                                        </p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon">
-                                            <i class="icon-envelope mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject">New user registration</p>
-                                        <p class="font-weight-light small-text">
-                                            2 days ago
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li> --}}
+                        {{--<li class="nav-item dropdown mail-dropdown">--}}
+                        {{--<a class="nav-link count-indicator" id="MailDropdown" href="#" data-toggle="dropdown">--}}
+                            {{--<i class="icon-envelope-letter icons"></i>--}}
+                            {{--<span class="count bg-danger"></span>--}}
+                        {{--</a>--}}
+                        {{--<div class="dropdown-menu navbar-dropdown mail-notification dropdownAnimation" aria-labelledby="MailDropdown">--}}
+                            {{--<a class="dropdown-item" href="#">--}}
+                                {{--<div class="sender-img">--}}
+                                    {{--<img src="images/faces/face6.jpg" alt="">--}}
+                                    {{--<span class="badge badge-success">&nbsp;</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="sender">--}}
+                                    {{--<p class="Sende-name">John Doe</p>--}}
+                                    {{--<p class="Sender-message">Hey, We have a meeting planned at the end of the day.</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<a class="dropdown-item" href="#">--}}
+                                {{--<div class="sender-img">--}}
+                                    {{--<img src="images/faces/face2.jpg" alt="">--}}
+                                    {{--<span class="badge badge-success">&nbsp;</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="sender">--}}
+                                    {{--<p class="Sende-name">Leanne Jones</p>--}}
+                                    {{--<p class="Sender-message">Can we schedule a call this afternoon?</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<a class="dropdown-item" href="#">--}}
+                                {{--<div class="sender-img">--}}
+                                    {{--<img src="images/faces/face3.jpg" alt="">--}}
+                                    {{--<span class="badge badge-primary">&nbsp;</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="sender">--}}
+                                    {{--<p class="Sende-name">Stella</p>--}}
+                                    {{--<p class="Sender-message">Great presentation the other day. Keep up the good work!</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<a class="dropdown-item" href="#">--}}
+                                {{--<div class="sender-img">--}}
+                                    {{--<img src="images/faces/face4.jpg" alt="">--}}
+                                    {{--<span class="badge badge-warning">&nbsp;</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="sender">--}}
+                                    {{--<p class="Sende-name">James Brown</p>--}}
+                                    {{--<p class="Sender-message">Need the updates of the project at the end of the week.</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<a href="#" class="dropdown-item view-all">View all</a>--}}
+                        {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="nav-item dropdown notification-dropdown">--}}
+                        {{--<a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">--}}
+                            {{--<i class="icon-speech icons"></i>--}}
+                            {{--<span class="count"></span>--}}
+                        {{--</a>--}}
+                        {{--<div class="dropdown-menu navbar-dropdown preview-list notification-drop-down dropdownAnimation" aria-labelledby="notificationDropdown">--}}
+                            {{--<a class="dropdown-item preview-item">--}}
+                                {{--<div class="preview-thumbnail">--}}
+                                    {{--<div class="preview-icon">--}}
+                                        {{--<i class="icon-info mx-0"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="preview-item-content">--}}
+                                    {{--<p class="preview-subject font-weight-medium">Application Error</p>--}}
+                                    {{--<p class="font-weight-light small-text">--}}
+                                        {{--Just now--}}
+                                    {{--</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<a class="dropdown-item preview-item">--}}
+                                {{--<div class="preview-thumbnail">--}}
+                                    {{--<div class="preview-icon">--}}
+                                        {{--<i class="icon-speech mx-0"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="preview-item-content">--}}
+                                    {{--<p class="preview-subject">Settings</p>--}}
+                                    {{--<p class="font-weight-light small-text">--}}
+                                        {{--Private message--}}
+                                    {{--</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                            {{--<a class="dropdown-item preview-item">--}}
+                                {{--<div class="preview-thumbnail">--}}
+                                    {{--<div class="preview-icon">--}}
+                                        {{--<i class="icon-envelope mx-0"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="preview-item-content">--}}
+                                    {{--<p class="preview-subject">New user registration</p>--}}
+                                    {{--<p class="font-weight-light small-text">--}}
+                                        {{--2 days ago--}}
+                                    {{--</p>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--</li>--}}
                         <li class="nav-item d-none d-sm-block profile-img">
                             <a class="nav-link profile-image" href="#">
-                                <img src="{{Auth::User()->avatar}}" alt="{{Auth::User()->avatar}}">
+                                <img src="{{asset(Auth::User()->avatar)}}" alt="{{Auth::User()->avatar}}">
                                 <span class="online-status online bg-success"></span>
                             </a>
                         </li>
@@ -146,74 +146,11 @@
                 <div class="row row-offcanvas row-offcanvas-right">
                     <!-- partial:partials/_sidebar.html -->
                     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                        <ul class="nav">
-                            <li class="nav-item nav-category">
-                                <span class="nav-link">GENERAL</span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('/')}}">
-                                    <span class="menu-title">Dashboard</span>
-                                    <i class="icon-speedometer menu-icon"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#berita" aria-expanded="false" aria-controls="berita">
-                                    <span class="menu-title">Berita</span>
-                                    <i class="icon-book-open menu-icon"></i>
-                                </a>
-                                <div class="collapse" id="berita">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('berita')}}">Buat baru</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('berita/draft')}}">Draft</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('berita/list-berita')}}">Daftar Berita</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('pengguna')}}">
-                                    <span class="menu-title">Pengguna</span>
-                                    <i class="icon-user menu-icon"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('pengguna')}}">
-                                    <span class="menu-title">Statistik Pengunjung</span>
-                                    <i class="icon-graph menu-icon"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item nav-category">
-                                <span class="nav-link">PENGATURAN</span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('kategori')}}">
-                                    <span class="menu-title">Kategori</span>
-                                    <i class="icon-tag menu-icon"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pages/widgets.html">
-                                    <span class="menu-title">Iklan</span>
-                                    <i class="icon-chart menu-icon"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#administrator" aria-expanded="false" aria-controls="administrator">
-                                    <span class="menu-title">Administrator</span>
-                                    <i class="icon-book-open menu-icon"></i>
-                                </a>
-                                <div class="collapse" id="administrator">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator')}}">Akun baru</a></li>
-                                        <li class="nav-item"> <a class="nav-link" href="{{url('administrator/list-akun')}}">Daftar akun</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item nav-category">
-                                <span class="nav-link">
-                                    <a class="btn btn-block btn-danger"  href="{{url('logout')}}">KELUAR AKUN</a>
-                                </span>
-                            </li>
-                        </ul>
+                        @if(Auth::User()->role == "administrator")
+                            @include('sidebar_admin')
+                        @else
+                            @include('sidebar_writer')
+                        @endif
                     </nav>
                     <!-- partial -->
                     <div class="content-wrapper">
@@ -257,7 +194,7 @@
         <script type="text/javascript">
             tinymce.init({
                 selector: '#text-editor',
-                height: 300,
+                height: 245,
                 theme: 'modern',
                 plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
                 toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',

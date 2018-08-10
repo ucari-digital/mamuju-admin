@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Edit Kategori</h5>
-                    <form method="post" action="{{url('kategori/update/'.$id)}}" class="row">
+                    <form method="post" action="{{url(Auth::User()->role.'/kategori/update/'.$id)}}" class="row">
                         {{csrf_field()}}
                         <div class="col-md-6">
                             <div class="form-group">

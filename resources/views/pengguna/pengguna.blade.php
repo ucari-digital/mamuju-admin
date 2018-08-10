@@ -55,10 +55,10 @@
 				<div class="container">
 					<div class="row justify-content-md-center">
 						<div class="col-md-12 mt-2">
-							<a href="{{url('pengguna/active/')}}" class="btn btn-success btn-block active">Aktifkan</a>
+							<a href="{{url(Auth::User()->role.'/pengguna/active/')}}" class="btn btn-success btn-block active">Aktifkan</a>
 						</div>
 						<div class="col-md-12 mt-2">
-							<a href="{{url('pengguna/suspend/')}}" class="btn btn-warning btn-block suspend">Nonaktifkan</a>
+							<a href="{{url(Auth::User()->role.'/pengguna/suspend/')}}" class="btn btn-warning btn-block suspend">Nonaktifkan</a>
 						</div>
 					</div>
 				</div>
@@ -76,10 +76,10 @@
 		$('.btn-action').click(function(){
 			var id = $(this).data('id');
 			var suspend = $('.suspend').attr('href');
-			$('.suspend').attr('href', '{{url('pengguna/suspend')}}/'+id);
+			$('.suspend').attr('href', '{{url(Auth::User()->role.'/pengguna/suspend')}}/'+id);
 
 			var active = $('.active').attr('href');
-			$('.active').attr('href', '{{url('pengguna/active')}}/'+id);
+			$('.active').attr('href', '{{url(Auth::User()->role.'/pengguna/active')}}/'+id);
 		});
 	});
 </script>
