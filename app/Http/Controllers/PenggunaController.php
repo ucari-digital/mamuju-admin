@@ -20,11 +20,11 @@ class PenggunaController extends Controller
     		->update([
     			'status' => $mode
     		]);
-    		return redirect('pengguna')
+    		return redirect(Auth::User()->role.'/pengguna')
 	    	->with('status', 'success')
 	    	->with('message', 'Status berhasil diubah');
     	} catch (\Exception $e) {
-    		return redirect('pengguna')
+    		return redirect(Auth::User()->role.'/pengguna')
 	    	->with('status', 'failed')
 	    	->with('message', 'Error : '.$e->getMessage());
     	}

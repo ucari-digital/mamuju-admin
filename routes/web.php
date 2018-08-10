@@ -15,7 +15,7 @@ Route::get('login', 'AuthController@login');
 Route::post('login', 'AuthController@login_action');
 Route::get('logout', 'AuthController@logout');
 
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function () {
     Route::get('/', 'DashboardController@index');
 
     Route::get('berita', 'BeritaController@index');
@@ -44,4 +44,17 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::get('pengguna', 'PenggunaController@index');
 	Route::get('pengguna/{mode}/{id?}', 'PenggunaController@status')
 	->where(['mode' => 'active|suspend']);
+});
+
+Route::group(['middleware' => 'writer', 'prefix' => 'writer'], function () {
+    Route::get('/', 'DashboardController@index_writer');
+
+    Route::get('berita', 'BeritaController@index_writer');
+    Route::post('berita/save', 'BeritaController@save_writer');
+    Route::get('berita/draft', 'BeritaController@draft_writer');
+    Route::get('berita/list', 'BeritaController@list_writer');
+
+    Route::get('berita/detail/{id}', 'BeritaController@detail_writer');
+    Route::get('berita/edit/{id}', 'BeritaController@edit_writer');
+    Route::post('berita/update/{id}', 'BeritaController@update_writer');
 });

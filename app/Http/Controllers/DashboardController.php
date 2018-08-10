@@ -11,4 +11,10 @@ class DashboardController extends Controller
     	$berita = Berita::where('status', 'publish')->count();
     	return view('dashboard', compact('berita'));
     }
+
+    public function index_writer()
+    {
+        $berita = Berita::where('status', 'publish')->count();
+        return view('dashboard', compact('berita'));
+    }
 }

@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Ubah Berita</h5>
-                    <form method="post" action="{{url('berita/update/'.$id)}}" enctype="multipart/form-data" class="row">
+                    <form method="post" action="{{url(Auth::User()->role.'/berita/update/'.$id)}}" enctype="multipart/form-data" class="row">
                         {{csrf_field()}}
                         <div class="col-md-6">
                             <div class="form-group">
