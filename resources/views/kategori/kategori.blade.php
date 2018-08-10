@@ -26,7 +26,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Buat Kategori</h5>
-				<form method="post" action="{{url('kategori/save')}}" class="row">
+				<form method="post" action="{{url(Auth::User()->role.'/kategori/save')}}" class="row">
 					{{csrf_field()}}
 					<div class="col-md-6">
 						<div class="form-group">
@@ -67,8 +67,8 @@
 											<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="{{url('kategori/edit/'.$row->id)}}">Edit</a>
-											<a class="dropdown-item" href="{{url('kategori/hapus/'.$row->id)}}">Hapus</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/kategori/edit/'.$row->id)}}">Edit</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/kategori/hapus/'.$row->id)}}">Hapus</a>
 										</div>
 									</div>
 								</td>

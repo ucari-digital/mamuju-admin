@@ -27,7 +27,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Buat Berita</h5>
-				<form method="post" action="{{url('berita/save')}}" enctype="multipart/form-data" class="row">
+				<form method="post" action="{{url(Auth::User()->role.'/berita/save')}}" enctype="multipart/form-data" class="row">
 					{{csrf_field()}}
 					<div class="col-md-6">
 						<div class="form-group">
@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<label>Tgl Upload</label>
-							<input type="text" name="tgl_upload" class="form-control" placeholder="{{date('Y-m-d H:i:s')}}">
+							<input type="text" name="tgl_upload" class="form-control" placeholder="{{date('Y-m-d H:i:s')}}" readonly>
 						</div>
 
 					</div>

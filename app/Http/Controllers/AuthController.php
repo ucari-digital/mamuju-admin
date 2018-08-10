@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function login_action(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/');
+            return redirect('/'.Auth::User()->role);
         } else {
             return redirect('/login')
                 ->with('info', "opps, password yang anda masukan tidak sama");
