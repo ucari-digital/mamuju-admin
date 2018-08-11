@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Kategori;
 use Illuminate\Http\Request;
-
+use Auth;
 class KategoriController extends Controller
 {
     public function index()
@@ -37,11 +37,12 @@ class KategoriController extends Controller
         Kategori::where('id', $id)
             ->update([
                 'nama_kategori' => $request->nama_kategori,
+                'label_color' => $request->label_color,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
 
         return redirect()
-            ->to('kategori');
+            ->to(Auth::user()->role.'/kategori');
     }
 
     public function delete($id)
