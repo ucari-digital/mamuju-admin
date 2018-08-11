@@ -103,7 +103,7 @@
 									{{$row->nama_kategori}}
 								</td>
 								<td>
-									<div class="label-color-table" style="background-color: {{explode(';', $row->label_color)[0]}}; color: {{explode(';', $row->label_color)[1]}};">{{explode(';', $row->label_color)[0]}}</div>
+									<div class="label-color-table" style="background-color: {{explode(';', $row->label_color)[0]}}; color: {{explode(';', $row->label_color)[1]}};">{{$row->nama_kategori}}</div>
 								</td>
 								<td>
 									<div class="dropdown">
