@@ -15,6 +15,10 @@ Route::get('login', 'AuthController@login');
 Route::post('login', 'AuthController@login_action');
 Route::get('logout', 'AuthController@logout');
 
+Route::get('/', function (){
+    return redirect('login');
+});
+
 Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function () {
     Route::get('/', 'DashboardController@index');
 

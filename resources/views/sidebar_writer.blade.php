@@ -17,7 +17,7 @@
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita')}}">Buat baru</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/draft')}}">Draft</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/list')}}">Daftar Berita</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/list-berita')}}">Daftar Berita</a></li>
             </ul>
         </div>
     </li>
