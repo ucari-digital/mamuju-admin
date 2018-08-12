@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Berita;
 use Illuminate\Http\Request;
 use Storage;
+use Auth;
 class BeritaController extends Controller
 {
 	public function index()
@@ -19,33 +20,38 @@ class BeritaController extends Controller
 
 	public function save(Request $request)
     {
-        // return $request;
-        $destination_path = 'images/berita';
+        try {
+            $destination_path = 'images/berita';
 
-        $file_data = $request->input('image');
-        $file_name = 'image_'.time().'.png';
-        @list($type, $file_data) = explode(';', $file_data);
-        @list(, $file_data)      = explode(',', $file_data);
-        if($file_data!=""){
-            Storage::disk('public')->put($destination_path.'/'.$file_name, base64_decode($file_data));
+            $file_data = $request->input('image');
+            $file_name = 'image_'.time().'.png';
+            @list($type, $file_data) = explode(';', $file_data);
+            @list(, $file_data)      = explode(',', $file_data);
+            if($file_data!=""){
+                Storage::disk('public')->put($destination_path.'/'.$file_name, base64_decode($file_data));
+            }
+
+            $seo = str_slug($request->judul, '-');
+
+            $simpan = new Berita;
+            $simpan->user_id = Auth::user()->id;
+            $simpan->judul = $request->judul;
+            $simpan->seo = $seo;
+            $simpan->kode_kategori = $request->kode_kategori;
+            $simpan->tags = $request->tags;
+            $simpan->gambar = $destination_path.'/'.$file_name;
+            $simpan->keterangan_gambar = $request->keterangan_gambar;
+            $simpan->berita = $request->berita;
+            $simpan->tgl_upload = $request->tgl_upload;
+            $simpan->visit = 0;
+            $simpan->save();
+
+            return redirect()
+                ->back();
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
-
-        $seo = str_slug($request->judul, '-');
-
-        $simpan = new Berita;
-        $simpan->user_id = $this->get_auth_id();
-        $simpan->judul = $request->judul;
-        $simpan->seo = $seo;
-        $simpan->kode_kategori = $request->kode_kategori;
-        $simpan->tags = $request->tags;
-        $simpan->gambar = $destination_path.'/'.$file_name;
-        $simpan->keterangan_gambar = $request->keterangan_gambar;
-        $simpan->berita = $request->berita;
-        $simpan->tgl_upload = $request->tgl_upload;
-        $simpan->save();
-
-        return redirect()
-            ->back();
+        
     }
 
     public function save_writer(Request $request)
