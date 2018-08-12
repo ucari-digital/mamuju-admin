@@ -14578,6 +14578,9 @@ pre {
 [id='mceu_31'].mce-widget.mce-notification.mce-notification-warning.mce-has-close.mce-in, [id="mceu_33"].mce-widget.mce-notification.mce-notification-warning.mce-has-close.mce-in {
   display: block; }
 
+.mce-content-body img {
+  width: 100% !important; }
+
 /*-------------------------------------------------------------------*/
 /* === Components === */
 /* Badges */

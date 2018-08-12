@@ -72,6 +72,7 @@
 							<label>Konten</label>
 							<div id="toolbar"></div>
 							<textarea name="berita" class="form-control" id="text-editor" placeholder="Konten Berita"></textarea>
+							<input name="image" type="file" id="upload" class="hidden" onchange="">
 						</div>
 						<button class="btn btn-primary btn-block">Simpan</button>
 					</div>
