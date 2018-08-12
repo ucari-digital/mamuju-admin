@@ -29,13 +29,13 @@
 							@endphp
 							@foreach($data as $no => $row)
 							@php
-							$render = html_entity_decode($row->berita);
+							$render = strip_tags($row->berita);
 							@endphp
 							<tr>
 								<td>{{$no+1}}</td>
 								<td>{{ str_limit($row->judul, 50)}}</td>
 								<td>{{$row->nama_kategori}}</td>
-								<td id="{{$row->id}}"><?php echo str_limit($render, 200, '...'); ?></td>
+								<td>{{str_limit($render, 200)}}</td>
 								<td>
 									<div class="dropdown">
 										<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
