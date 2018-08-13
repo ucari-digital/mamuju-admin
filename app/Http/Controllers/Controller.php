@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     public function get_auth_id()
     {
-        return null;
+        return Auth::User()->id;
     }
 }

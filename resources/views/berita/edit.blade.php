@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Tgl Upload</label>
-                                <input type="text" name="tgl_upload" class="form-control" value="{{$data->tgl_upload}}">
+                                <input type="text" name="tgl_upload" class="form-control" placeholder="{{date('Y-m-d H:i:s')}}" readonly>
                             </div>
 
                         </div>

@@ -43,7 +43,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{url(Auth::User()->role.'/iklan')}}">
             <span class="menu-title">Iklan</span>
             <i class="icon-chart menu-icon"></i>
         </a>

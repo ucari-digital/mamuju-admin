@@ -137,13 +137,19 @@ class BeritaController extends Controller
     {
         $seo = str_slug($request->judul, '-');
 
-        $image = $request->gambar;
-        $destination_path = 'images/berita';
-
         if ($request->hasFile('gambar'))
         {
-            $image_name = $seo.'.'.$image->getClientOriginalExtension();
-            $image->move($destination_path, $image_name);
+            $destination_path = 'images/berita';
+
+            $file_data = $request->input('gambar');
+            $file_name = 'image_'.time().'.png';
+            @list($type, $file_data) = explode(';', $file_data);
+            @list(, $file_data)      = explode(',', $file_data);
+            if($file_data!=""){
+                Storage::disk('public')->put($destination_path.'/'.$file_name, base64_decode($file_data));
+            }
+
+            $image_name = $destination_path.'/'.$file_name;
         }else{
             $image_name = Berita::select('gambar')->where('id', $id)->first()->gambar;
         }
@@ -170,13 +176,19 @@ class BeritaController extends Controller
     {
         $seo = str_slug($request->judul, '-');
 
-        $image = $request->gambar;
-        $destination_path = 'images/berita';
-
         if ($request->hasFile('gambar'))
         {
-            $image_name = $seo.'.'.$image->getClientOriginalExtension();
-            $image->move($destination_path, $image_name);
+            $destination_path = 'images/berita';
+
+            $file_data = $request->input('gambar');
+            $file_name = 'image_'.time().'.png';
+            @list($type, $file_data) = explode(';', $file_data);
+            @list(, $file_data)      = explode(',', $file_data);
+            if($file_data!=""){
+                Storage::disk('public')->put($destination_path.'/'.$file_name, base64_decode($file_data));
+            }
+
+            $image_name = $destination_path.'/'.$file_name;
         }else{
             $image_name = Berita::select('gambar')->where('id', $id)->first()->gambar;
         }
