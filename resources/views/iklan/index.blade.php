@@ -31,7 +31,7 @@
 @endsection
 @section('content')
 <div class="row">
-	<div class="col-md-12 col-12">
+	<div class="col-md-4">
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Buat Iklan</h5>
@@ -56,27 +56,25 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="row mt-3">
-	<div class="col-md-12 col-12">
+	<div class="col-md-8">
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Daftar Iklan</h5>
-				<div class="col-md-6">
+				<div class="table-responsive">
 					<table class="table">
 						<thead>
-							<tr>
-								<th>Banner</th>
-								<th>Link</th>
-								<th>Hit</th>
-								<th>Aksi</th>
-							</tr>
+						<tr>
+							<th>Banner</th>
+							<th>Link</th>
+							<th>Hit</th>
+							<th>Aksi</th>
+						</tr>
 						</thead>
 						<tbody>
-							@foreach($data as $row)
+						@foreach($data as $row)
 							<tr>
 								<td>
-									<img src="{{asset('image/iklan/'.$row->gambar)}}" class="img" style="width: 50px; height: 50px;">
+									<img src="{{asset('images/iklan/'.$row->gambar)}}" class="img" style="width: 50px; height: 50px;">
 								</td>
 								<td>
 									{{$row->url}}
@@ -91,12 +89,12 @@
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 											<a class="dropdown-item" href="{{url(Auth::User()->role.'/iklan/edit/'.$row->id)}}">Edit</a>
-											<a class="dropdown-item" href="{{url(Auth::User()->role.'/iklan/hapus/'.$row->id)}}">Hapus</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/iklan/delete/'.$row->id)}}">Hapus</a>
 										</div>
 									</div>
 								</td>
 							</tr>
-							@endforeach
+						@endforeach
 						</tbody>
 					</table>
 				</div>
@@ -106,26 +104,4 @@
 </div>
 @endsection
 @section('footer')
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.tags').selectize({
-		    delimiter: ',',
-		    persist: false,
-		    create: function(input) {
-		        return {
-		            value: input,
-		            text: input
-		        }
-		    }
-		});
-		$('.table-color').click(function(){
-			var color_code = $(this).data('color');
-			var color_font = $(this).data('font');
-			$('.input-color').val(color_code+';'+color_font);
-			$('.label-color').html('warna '+color_code);
-			$('.label-color').css('background-color', color_code);
-			$('.label-color').css('color', color_font);
-		});
-	});
-</script>
 @endsection

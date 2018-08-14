@@ -6,6 +6,8 @@ use App\Model\Iklan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use Auth;
+
 class IklanController extends Controller
 {
     public function index()
@@ -17,19 +19,15 @@ class IklanController extends Controller
     public function save(Request $request)
     {
         try {
+            $image = $request->gambar;
             $destination_path = 'images/iklan';
 
-            $file_data = $request->input('gambar');
-            $file_name = 'image_'.time().'.png';
-            @list($type, $file_data) = explode(';', $file_data);
-            @list(, $file_data)      = explode(',', $file_data);
-            if($file_data!=""){
-                Storage::disk('public')->put($destination_path.'/'.$file_name, base64_decode($file_data));
-            }
+            $image_name = rand('100', '999').'.'.$image->getClientOriginalExtension();
+            $image->move($destination_path, $image_name);
 
             $simpan = new Iklan;
             $simpan->user_id = $this->get_auth_id();
-            $simpan->gambar = $destination_path.'/'.$file_name;
+            $simpan->gambar = $image_name;
             $simpan->url = $request->url;
             $simpan->save();
 
@@ -49,21 +47,23 @@ class IklanController extends Controller
 
     public function update(Request $request, $id)
     {
+        $gambar = Iklan::select('gambar')->where('id', $id)->first()->gambar;
+        $arr_gambar = explode('.', $gambar);
+
         if ($request->hasFile('gambar'))
         {
+            $image = $request->gambar;
             $destination_path = 'images/iklan';
+            $file_directory = $destination_path.'/'.$gambar;
 
-            $file_data = $request->input('gambar');
-            $file_name = 'image_'.time().'.png';
-            @list($type, $file_data) = explode(';', $file_data);
-            @list(, $file_data)      = explode(',', $file_data);
-            if($file_data!=""){
-                Storage::disk('public')->put($destination_path.'/'.$file_name, base64_decode($file_data));
+            if(file_exists(public_path($file_directory)))
+            {
+                unlink(public_path($file_directory));
             }
 
-            $gambar = $destination_path.'/'.$file_name;
-        }else{
-            $gambar = Iklan::select('gambar')->where('id', $id)->first()->gambar;
+            $image_name = $arr_gambar[0].'.'.$image->getClientOriginalExtension();
+            $image->move($destination_path, $image_name);
+            $gambar = $image_name;
         }
 
         Iklan::where('id', $id)
@@ -80,6 +80,14 @@ class IklanController extends Controller
 
     public function delete($id)
     {
+        $gambar = Iklan::select('gambar')->where('id', $id)->first()->gambar;
+        $file_directory = 'images/iklan/'.$gambar;
+
+        if(file_exists(public_path($file_directory)))
+        {
+            unlink(public_path($file_directory));
+        }
+
         Iklan::where('id', $id)
             ->delete();
 
