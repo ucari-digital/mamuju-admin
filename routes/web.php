@@ -15,6 +15,10 @@ Route::get('login', 'AuthController@login');
 Route::post('login', 'AuthController@login_action');
 Route::get('logout', 'AuthController@logout');
 
+Route::get('/', function (){
+    return redirect('login');
+});
+
 Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function () {
     Route::get('/', 'DashboardController@index');
 
@@ -44,6 +48,12 @@ Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function ()
 	Route::get('pengguna', 'PenggunaController@index');
 	Route::get('pengguna/{mode}/{id?}', 'PenggunaController@status')
 	->where(['mode' => 'active|suspend']);
+
+    Route::get('iklan', 'IklanController@index');
+    Route::post('iklan/save', 'IklanController@save');
+    Route::get('iklan/edit/{id}', 'IklanController@edit');
+    Route::post('iklan/update/{id}', 'IklanController@update');
+    Route::get('iklan/delete/{id}', 'IklanController@delete');
 });
 
 Route::group(['middleware' => 'writer', 'prefix' => 'writer'], function () {
