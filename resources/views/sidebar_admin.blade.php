@@ -28,7 +28,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{url(Auth::User()->role.'/pengguna')}}">
+        <a class="nav-link" href="{{url(Auth::User()->role.'/statistik')}}">
             <span class="menu-title">Statistik Pengunjung</span>
             <i class="icon-graph menu-icon"></i>
         </a>
