@@ -49,6 +49,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function ()
 	Route::get('pengguna/{mode}/{id?}', 'PenggunaController@status')
 	->where(['mode' => 'active|suspend']);
 
+    Route::get('statistik', 'StatistikController@index');
+
     Route::get('iklan', 'IklanController@index');
     Route::post('iklan/save', 'IklanController@save');
     Route::get('iklan/edit/{id}', 'IklanController@edit');
