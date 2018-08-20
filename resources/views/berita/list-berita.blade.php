@@ -20,7 +20,10 @@
 								<th>Judul</th>
 								<th>Kategori</th>
 								<th>Konten</th>
-								@if(Auth::User()->role == "administrator")<th>Aksi</th>@endif
+								@if(Auth::User()->role == "administrator")
+									<th>Komentar</th>
+									<th>Aksi</th>
+								@endif
 							</tr>
 						</thead>
 						<tbody>
@@ -37,6 +40,11 @@
 								<td>{{$row->nama_kategori}}</td>
 								<td>{{str_limit($render, 200)}}</td>
 								@if(Auth::User()->role == "administrator")
+									<td>
+										<button data-toggle='modal' data-target='#komentar_{{$row->id}}' class="btn btn-xs btn-success">
+											{{\App\Model\Komentar::count_komentar($row->id)}}
+										</button>
+									</td>
 									<td>
 										<div class="dropdown">
 											<a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,6 +64,47 @@
 						</tbody>
 					</table>
 				</div>
+				@foreach($data as $row)
+				<div class="modal fade" id="komentar_{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">{{str_limit($row->judul, 50)}}</h4>
+							</div>
+							<div class="modal-body">
+								<table class="table">
+									<thead>
+									<tr>
+										<th>#</th>
+										<th>list</th>
+										<th></th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach(\App\Model\Komentar::get_komentar($row->id) as $no => $value)
+										<tr>
+											<td>{{$no+1}}</td>
+											<td>
+												<b>{{$value->name}} / {{$value->email}}</b>
+												<hr>
+												<smal>isi komentar :</smal><br>
+												{{$value->komentar}}
+											</td>
+											<td>
+												<a href="{{url(Auth::User()->role.'/berita/hapus-komentar/'.$value->id)}}" class="btn btn-xs btn-danger">hapus</a>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>

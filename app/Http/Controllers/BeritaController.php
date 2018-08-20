@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Berita;
+use App\Model\Komentar;
 use Illuminate\Http\Request;
 use Storage;
 use Auth;
@@ -214,6 +215,13 @@ class BeritaController extends Controller
                 'approved_by' => $approved_by,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
+        return redirect()->back();
+    }
+
+    public function delete_komentar($id)
+    {
+        Komentar::where('id', $id)
+            ->delete();
         return redirect()->back();
     }
 }

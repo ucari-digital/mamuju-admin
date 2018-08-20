@@ -30,6 +30,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function ()
     Route::get('berita/edit/{id}', 'BeritaController@edit');
     Route::post('berita/update/{id}', 'BeritaController@update');
     Route::get('berita/{id}/{status}', 'BeritaController@status');
+    Route::get('berita/hapus-komentar/{id}', 'BeritaController@delete_komentar');
 
     Route::get('kategori', 'KategoriController@index');
     Route::post('kategori/save', 'KategoriController@save');
