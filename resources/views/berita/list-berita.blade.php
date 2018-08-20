@@ -91,7 +91,7 @@
 												{{$value->komentar}}
 											</td>
 											<td>
-												<a href="{{url(Auth::User()->role.'/berita/hapus-komentar/'.$value->id)}}" class="btn btn-xs btn-danger">hapus</a>
+												<a href="{{url(Auth::User()->role.'/berita/komentar/hapus/'.$value->id)}}" class="btn btn-xs btn-danger">hapus</a>
 											</td>
 										</tr>
 									@endforeach
