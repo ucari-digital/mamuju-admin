@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<label>Tgl Upload</label>
-							<input type="text" name="tgl_upload" class="form-control" placeholder="{{date('Y-m-d H:i:s')}}" readonly>
+							<input type="text" name="tgl_upload" class="form-control" placeholder="{{date('d-m-Y')}}">
 						</div>
 
 					</div>
