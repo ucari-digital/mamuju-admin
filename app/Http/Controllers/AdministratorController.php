@@ -35,6 +35,7 @@ class AdministratorController extends Controller
 	    	
 	    	$field = new User;
 	    	$field->name = $request->name;
+            $field->nickname = str_slug($request->name, '-').'-'.rand(000,999);
 	    	$field->email = $request->email;
 	    	$field->password = Hash::make($request->password);
 	    	$field->position = $request->position;
