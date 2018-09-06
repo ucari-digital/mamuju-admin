@@ -47,9 +47,9 @@
 											<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="{{url('administrator/edit/'.$item->id)}}">Ubah</a>
-											<a class="dropdown-item" href="{{url('administrator/delete/'.$item->id)}}">Hapus</a>
-											<a class="dropdown-item" href="{{url('administrator/suspend/'.$item->id)}}">Nonaktifkan</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/administrator/edit/'.$item->id)}}">Ubah</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/administrator/delete/'.$item->id)}}">Hapus</a>
+											<a class="dropdown-item" href="{{url(Auth::User()->role.'/administrator/suspend/'.$item->id)}}">Nonaktifkan</a>
 										</div>
 									</div>
 								</td>

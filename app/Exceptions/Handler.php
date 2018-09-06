@@ -44,36 +44,40 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
+    // public function render($request, Exception $exception)
+    // {
+    //     if ($this->isHttpException($exception)) {
+    //         switch ($exception->getStatusCode()) {
+
+    //             // not authorized
+    //             case '403':
+    //                 return \Response::view('errors.403',array(),403);
+    //                 break;
+
+    //             // not found
+    //             case '404':
+    //                 return \Response::view('errors.404',array(),404);
+    //                 break;
+
+    //             // internal error
+    //             case '500':
+    //                 return \Response::view('errors.500',array(),500);
+    //                 break;
+
+    //             default:
+    //                 return $this->renderHttpException($exception);
+    //                 break;
+    //         }
+    //     } else {
+    //         if (env('APP_ENV') == "local"){
+    //             return parent::render($request, $e);
+    //         }else{
+    //             return \Response::view('errors.500',array(),500);
+    //         }
+    //     }
+    // }
     public function render($request, Exception $exception)
     {
-        if ($this->isHttpException($exception)) {
-            switch ($exception->getStatusCode()) {
-
-                // not authorized
-                case '403':
-                    return \Response::view('errors.403',array(),403);
-                    break;
-
-                // not found
-                case '404':
-                    return \Response::view('errors.404',array(),404);
-                    break;
-
-                // internal error
-                case '500':
-                    return \Response::view('errors.500',array(),500);
-                    break;
-
-                default:
-                    return $this->renderHttpException($exception);
-                    break;
-            }
-        } else {
-            if (env('APP_ENV') == "local"){
-                return parent::render($request, $e);
-            }else{
-                return \Response::view('errors.500',array(),500);
-            }
-        }
+        return parent::render($request, $exception);
     }
 }

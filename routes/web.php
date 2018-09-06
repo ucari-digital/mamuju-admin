@@ -41,7 +41,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'administrator'], function ()
 	Route::get('administrator', 'AdministratorController@index');
 	Route::get('administrator/list-akun', 'AdministratorController@list');
 	Route::get('administrator/edit/{id}', 'AdministratorController@edit');
-	Route::get('administrator/save', 'AdministratorController@save');
+	Route::post('administrator/save', 'AdministratorController@save');
 	Route::post('administrator/update/{id}', 'AdministratorController@update');
 	Route::get('administrator/{mode}/{id?}', 'AdministratorController@status')
 	->where(['mode' => 'delete|suspend']);

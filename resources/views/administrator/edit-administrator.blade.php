@@ -34,7 +34,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">Akun Baru</h5>
-				<form class="row" action="{{url('administrator/update/'.$data->id)}}" method="post" enctype="multipart/form-data">
+				<form class="row" action="{{url(Auth::User()->role.'/administrator/update/'.$data->id)}}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="col-md-6">
 						<div class="form-group">

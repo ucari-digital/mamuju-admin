@@ -28,11 +28,10 @@ class AdministratorController extends Controller
     	return view('administrator.edit-administrator', compact('data'));
     }
 
-    public function save()
+    public function save(Request $request)
     {
-    	try {
+    	// try {
             $avatar = Storage::disk('public')->put('images/avatar', $request->file('avatar'));
-            
             $field = new User;
             $field->name = $request->name;
             $field->nickname = str_slug($request->name, '-').'-'.rand(000,999);
@@ -42,14 +41,15 @@ class AdministratorController extends Controller
             $field->role = $request->role;
             $field->avatar = $avatar;
             $field->save();
+
             return redirect('administrator')
             ->with('status', 'success')
             ->with('message', 'Berhasil mendaftarkan anggota');
-        } catch (\Exception $e) {
-            return redirect('administrator')
-            ->with('status', 'failed')
-            ->with('message', 'Error : '.$e->getMessage());
-        }
+        // } catch (\Exception $e) {
+        //     return redirect('administrator')
+        //     ->with('status', 'failed')
+        //     ->with('message', 'Error : '.$e->getMessage());
+        // }
     }
 
     public function update(Request $r, $id)
