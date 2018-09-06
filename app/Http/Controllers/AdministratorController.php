@@ -31,25 +31,25 @@ class AdministratorController extends Controller
     public function save()
     {
     	try {
-	    	$avatar = Storage::disk('public')->put('images/avatar', $request->file('avatar'));
-	    	
-	    	$field = new User;
-	    	$field->name = $request->name;
+            $avatar = Storage::disk('public')->put('images/avatar', $request->file('avatar'));
+            
+            $field = new User;
+            $field->name = $request->name;
             $field->nickname = str_slug($request->name, '-').'-'.rand(000,999);
-	    	$field->email = $request->email;
-	    	$field->password = Hash::make($request->password);
-	    	$field->position = $request->position;
-	    	$field->role = $request->role;
-	    	$field->avatar = $avatar;
-	    	$field->save();
-	    	return redirect('administrator')
-	    	->with('status', 'success')
-	    	->with('message', 'Berhasil mendaftarkan anggota');
-    	} catch (\Exception $e) {
-    		return redirect('administrator')
-	    	->with('status', 'failed')
-	    	->with('message', 'Error : '.$e->getMessage());
-    	}
+            $field->email = $request->email;
+            $field->password = Hash::make($request->password);
+            $field->position = $request->position;
+            $field->role = $request->role;
+            $field->avatar = $avatar;
+            $field->save();
+            return redirect('administrator')
+            ->with('status', 'success')
+            ->with('message', 'Berhasil mendaftarkan anggota');
+        } catch (\Exception $e) {
+            return redirect('administrator')
+            ->with('status', 'failed')
+            ->with('message', 'Error : '.$e->getMessage());
+        }
     }
 
     public function update(Request $r, $id)
