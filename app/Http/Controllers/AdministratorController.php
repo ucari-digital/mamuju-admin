@@ -73,7 +73,7 @@ class AdministratorController extends Controller
 	    			'avatar' => $avatar
 	    		]);
     		}
-    		return redirect('administrator/edit/'.$id)
+    		return redirect()->back()
 	    	->with('status', 'success')
 	    	->with('message', 'Berhasil mengubah informasi anggota');
     	} catch (\Exception $e) {
