@@ -2,7 +2,7 @@
     <li class="nav-item nav-category">
         <span class="nav-link">GENERAL</span>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @yield('menu-dashboard')">
         <a class="nav-link" href="{{url(Auth::User()->role.'/')}}">
             <span class="menu-title">Dashboard</span>
             <i class="icon-speedometer menu-icon"></i>
@@ -13,21 +13,21 @@
             <span class="menu-title">Berita</span>
             <i class="icon-book-open menu-icon"></i>
         </a>
-        <div class="collapse" id="berita">
+        <div class="collapse @yield('menu-berita')" id="berita">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita')}}">Buat baru</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/draft')}}">Draft</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/list-berita')}}">Daftar Berita</a></li>
+                <li class="nav-item @yield('subberita-baru')"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita')}}">Buat baru</a></li>
+                <li class="nav-item @yield('subberita-draft')"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/draft')}}">Draft</a></li>
+                <li class="nav-item @yield('subberita-list')"> <a class="nav-link" href="{{url(Auth::User()->role.'/berita/list-berita')}}">Daftar Berita</a></li>
             </ul>
         </div>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @yield('menu-pengguna')">
         <a class="nav-link" href="{{url(Auth::User()->role.'/pengguna')}}">
             <span class="menu-title">Pengguna</span>
             <i class="icon-user menu-icon"></i>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @yield('menu-statistik')">
         <a class="nav-link" href="{{url(Auth::User()->role.'/statistik')}}">
             <span class="menu-title">Statistik Pengunjung</span>
             <i class="icon-graph menu-icon"></i>
@@ -36,13 +36,13 @@
     <li class="nav-item nav-category">
         <span class="nav-link">PENGATURAN</span>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @yield('menu-kategori')">
         <a class="nav-link" href="{{url(Auth::User()->role.'/kategori')}}">
             <span class="menu-title">Kategori</span>
             <i class="icon-tag menu-icon"></i>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item @yield('menu-iklan')">
         <a class="nav-link" href="{{url(Auth::User()->role.'/iklan')}}">
             <span class="menu-title">Iklan</span>
             <i class="icon-chart menu-icon"></i>
@@ -53,10 +53,10 @@
             <span class="menu-title">Administrator</span>
             <i class="icon-book-open menu-icon"></i>
         </a>
-        <div class="collapse" id="administrator">
+        <div class="collapse @yield('menu-admin')" id="administrator">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/administrator')}}">Akun baru</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url(Auth::User()->role.'/administrator/list-akun')}}">Daftar akun</a></li>
+                <li class="nav-item @yield('subadmin-baru')"> <a class="nav-link" href="{{url(Auth::User()->role.'/administrator')}}">Akun baru</a></li>
+                <li class="nav-item @yield('subadmin-list')"> <a class="nav-link" href="{{url(Auth::User()->role.'/administrator/list-akun')}}">Daftar akun</a></li>
             </ul>
         </div>
     </li>

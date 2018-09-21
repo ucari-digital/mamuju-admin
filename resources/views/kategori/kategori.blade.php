@@ -29,6 +29,9 @@
 	}
 </style>
 @endsection
+@section('menu-kategori')
+	active
+@endsection
 @section('content')
 <div class="row">
 	<div class="col-md-12 col-12">

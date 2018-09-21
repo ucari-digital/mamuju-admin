@@ -6,6 +6,12 @@
 		}
 	</style>
 @endsection
+@section('menu-berita')
+	show
+@endsection
+@section('subberita-draft')
+	active
+@endsection
 @section('content')
 <div class="row">
 	<div class="col-md-12 col-12">

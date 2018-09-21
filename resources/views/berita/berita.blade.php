@@ -21,6 +21,12 @@
 	}
 </style>
 @endsection
+@section('menu-berita')
+	show
+@endsection
+@section('subberita-baru')
+	active
+@endsection
 @section('content')
 <div class="row">
 	<div class="col-md-12 col-12">
@@ -28,16 +34,40 @@
 			<div class="card-body">
 				<h5 class="card-title">Buat Berita</h5>
 				<form method="post" action="{{url(Auth::User()->role.'/berita/save')}}" enctype="multipart/form-data" class="row">
-					{{csrf_field()}}
-					<div class="col-md-6">
+					@csrf
+					<div class="col-md-8">
 						<div class="form-group">
 							<label>Judul</label>
-							<input name="judul" class="form-control" placeholder="Judul Berita">
+							<input name="judul" class="form-control" placeholder="Judul Berita" required>
 						</div>
+					</div>
+					<div class="col-md-4">
 						<div class="form-group">
-							<label>Gambar</label>
+							<label>Kategori</label>
+							<select name="kode_kategori" class="form-control" required>
+								@foreach(\App\Model\Kategori::get_data() as $items)
+									<option value="{{$items->id}}">{{$items->nama_kategori}}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Tags / Label</label>
+							<input type="text" name="tags" class="tags" data-role="tagsinput">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Tanggal Terbit</label>
+							<input type="text" name="tgl_upload" class="form-control" value="{{date('d-m-Y H:i')}} WIB" required>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Gambar Berita</label>
 							<input type="file" class="file-upload-default" id="crpr-upload">
-							<input type="hidden" name="image" id="image-base" value="">
+							<input type="hidden" name="image" id="image-base" value="" required>
 							<div class="input-group col-xs-12">
 								<input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
 								<span class="input-group-append">
@@ -45,36 +75,24 @@
 								</span>
 							</div>
 						</div>
+					</div>
+					<div class="col-md-12">
 						<div class="form-group">
 							<label>Keterangan Gambar</label>
 							<input name="keterangan_gambar" class="form-control" placeholder="Keterangan Gambar">
 						</div>
-						<div class="form-group">
-							<label>Kategori</label>
-							<select name="kode_kategori" class="form-control">
-								@foreach(\App\Model\Kategori::get_data() as $items)
-									<option value="{{$items->id}}">{{$items->nama_kategori}}</option>
-								@endforeach
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Tags / Label</label>
-							<input type="text" name="tags" class="tags" data-role="tagsinput">
-						</div>
-						<div class="form-group">
-							<label>Tgl Upload</label>
-							<input type="text" name="tgl_upload" class="form-control" placeholder="{{date('d-m-Y')}}">
-						</div>
-
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label>Konten</label>
+							<label>Isi Konten Berita</label>
 							<div id="toolbar"></div>
-							<textarea name="berita" class="form-control" id="text-editor" placeholder="Konten Berita"></textarea>
-							<input name="image" type="file" id="upload" class="hidden" onchange="">
+							<textarea name="berita" class="form-control summernote"></textarea>
 						</div>
-						<button class="btn btn-primary btn-block">Simpan</button>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group text-right">
+							<button class="btn btn-primary">SIMPAN</button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -85,10 +103,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
+				<h5 class="modal-title">Review Image</h5>
 			</div>
 			<div class="modal-body">
 				<img src="" id="crpr-image" class="img-fluid">
@@ -104,10 +119,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
+				<h5 class="modal-title">Review Image</h5>
 			</div>
 			<div class="modal-body">
 				<img src="" id="crpr-image-preview" class="img-fluid mx-auto d-block">

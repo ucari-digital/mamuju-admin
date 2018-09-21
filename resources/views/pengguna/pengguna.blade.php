@@ -6,6 +6,9 @@
 		}
 	</style>
 @endsection
+@section('menu-pengguna')
+	active
+@endsection
 @section('content')
 <div class="row">
 	<div class="col-md-12 col-12">
@@ -34,8 +37,8 @@
 											<i class="mdi mdi-dots-horizontal table-icon-aksi"></i>
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="{{url('pengguna/active/'.$item->id)}}">Aktifkan</a>
-											<a class="dropdown-item" href="{{url('pengguna/suspend/'.$item->id)}}">Nonaktifkan</a>
+											<a class="dropdown-item" href="{{url(Auth::user()->role.'/pengguna/active/'.$item->id)}}">Aktifkan</a>
+											<a class="dropdown-item" href="{{url(Auth::user()->role.'/pengguna/suspend/'.$item->id)}}">Nonaktifkan</a>
 										</div>
 									</div>
 								</td>

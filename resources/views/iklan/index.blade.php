@@ -29,6 +29,9 @@
 	}
 </style>
 @endsection
+@section('menu-iklan')
+	actibe
+@endsection
 @section('content')
 <div class="row">
 	<div class="col-md-4">
