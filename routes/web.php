@@ -65,7 +65,7 @@ Route::group(['middleware' => 'writer', 'prefix' => 'writer'], function () {
     Route::get('berita', 'BeritaController@index_writer');
     Route::post('berita/save', 'BeritaController@save_writer');
     Route::get('berita/draft', 'BeritaController@draft_writer');
-    Route::get('berita/list', 'BeritaController@list_writer');
+    Route::get('berita/list-berita', 'BeritaController@list_writer');
 
     Route::get('berita/detail/{id}', 'BeritaController@detail_writer');
     Route::get('berita/edit/{id}', 'BeritaController@edit_writer');
