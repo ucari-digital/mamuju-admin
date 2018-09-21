@@ -8,9 +8,12 @@
 			padding: 10px;
 		}
 		td.top{
-			background-color: 
+			background-color:
 		}
 	</style>
+@endsection
+@section('menu-statistik')
+	active
 @endsection
 @section('content')
 <div class="row">

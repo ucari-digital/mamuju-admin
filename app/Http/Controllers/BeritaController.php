@@ -47,6 +47,7 @@ class BeritaController extends Controller
             $simpan->visit = 0;
             $simpan->save();
 
+            alert()->success('Berhasil', 'Konten berita berhasil tersimpan');
             return redirect()
                 ->back();
         } catch (\Exception $e) {
@@ -71,7 +72,7 @@ class BeritaController extends Controller
         $seo = str_slug($request->judul, '-');
 
         $simpan = new Berita;
-        $simpan->user_id = $this->get_auth_id();
+        $simpan->user_id = Auth::user()->id;
         $simpan->judul = $request->judul;
         $simpan->seo = $seo;
         $simpan->kode_kategori = $request->kode_kategori;
@@ -82,6 +83,7 @@ class BeritaController extends Controller
         $simpan->tgl_upload = $request->tgl_upload;
         $simpan->save();
 
+        alert()->success('Berhasil', 'Konten berita berhasil tersimpan');
         return redirect()
             ->back();
     }
@@ -136,68 +138,92 @@ class BeritaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $seo = str_slug($request->judul, '-');
+        try {
+            if ($request->hasFile('gambar'))
+            {
+                $destination_path = 'images/berita';
 
-        $image = $request->gambar;
-        $destination_path = 'images/berita';
+                $file_data = $request->input('image');
+                $file_name = 'image_' . time() . '.png';
+                @list($type, $file_data) = explode(';', $file_data);
+                @list(, $file_data) = explode(',', $file_data);
+                if ($file_data != "") {
+                    Storage::disk('public')->put($destination_path . '/' . $file_name, base64_decode($file_data));
+                }
 
-        if ($request->hasFile('gambar'))
-        {
-            $image_name = $seo.'.'.$image->getClientOriginalExtension();
-            $image->move($destination_path, $image_name);
-        }else{
-            $image_name = Berita::select('gambar')->where('id', $id)->first()->gambar;
+                $image_name = $image_name =$destination_path.'/'.$file_name;
+
+            }else{
+                $image_name = Berita::select('gambar')->where('id', $id)->first()->gambar;
+            }
+
+            $seo = str_slug($request->judul, '-');
+
+            Berita::where('id', $id)
+                ->update([
+                    'user_id' => Auth::user()->id,
+                    'judul' => $request->judul,
+                    'seo' => $seo,
+                    'kode_kategori' => $request->kode_kategori,
+                    'tags' => $request->tags,
+                    'gambar' => $image_name,
+                    'keterangan_gambar' => $request->keterangan_gambar,
+                    'berita' => $request->berita,
+                    'tgl_upload' => $request->tgl_upload,
+                    'updated_at' => date("Y-m-d H:i:s")
+                ]);
+
+            alert()->success('Berhasil', 'Konten berita berhasil di perbarui');
+            return redirect()
+                ->to(Auth::User()->role.'/berita/draft');
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
-
-        Berita::where('id', $id)
-            ->update([
-                'user_id' => $this->get_auth_id(),
-                'judul' => $request->judul,
-                'seo' => $seo,
-                'kode_kategori' => $request->kode_kategori,
-                'tags' => $request->tags,
-                'gambar' => $image_name,
-                'keterangan_gambar' => $request->keterangan_gambar,
-                'berita' => $request->berita,
-                'tgl_upload' => $request->tgl_upload,
-                'updated_at' => date("Y-m-d H:i:s")
-            ]);
-
-        return redirect()
-            ->to(Auth::User()->role.'/berita/draft');
     }
 
     public function update_writer(Request $request, $id)
     {
-        $seo = str_slug($request->judul, '-');
+        try {
+            if ($request->hasFile('gambar'))
+            {
+                $destination_path = 'images/berita';
 
-        $image = $request->gambar;
-        $destination_path = 'images/berita';
+                $file_data = $request->input('image');
+                $file_name = 'image_' . time() . '.png';
+                @list($type, $file_data) = explode(';', $file_data);
+                @list(, $file_data) = explode(',', $file_data);
+                if ($file_data != "") {
+                    Storage::disk('public')->put($destination_path . '/' . $file_name, base64_decode($file_data));
+                }
 
-        if ($request->hasFile('gambar'))
-        {
-            $image_name = $seo.'.'.$image->getClientOriginalExtension();
-            $image->move($destination_path, $image_name);
-        }else{
-            $image_name = Berita::select('gambar')->where('id', $id)->first()->gambar;
+                $image_name = $image_name =$destination_path.'/'.$file_name;
+
+            }else{
+                $image_name = Berita::select('gambar')->where('id', $id)->first()->gambar;
+            }
+
+            $seo = str_slug($request->judul, '-');
+
+            Berita::where('id', $id)
+                ->update([
+                    'user_id' => Auth::user()->id,
+                    'judul' => $request->judul,
+                    'seo' => $seo,
+                    'kode_kategori' => $request->kode_kategori,
+                    'tags' => $request->tags,
+                    'gambar' => $image_name,
+                    'keterangan_gambar' => $request->keterangan_gambar,
+                    'berita' => $request->berita,
+                    'tgl_upload' => $request->tgl_upload,
+                    'updated_at' => date("Y-m-d H:i:s")
+                ]);
+
+            alert()->success('Berhasil', 'Konten berita berhasil di perbarui');
+            return redirect()
+                ->to(Auth::User()->role.'/berita/draft');
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
-
-        Berita::where('id', $id)
-            ->update([
-                'user_id' => $this->get_auth_id(),
-                'judul' => $request->judul,
-                'seo' => $seo,
-                'kode_kategori' => $request->kode_kategori,
-                'tags' => $request->tags,
-                'gambar' => $image_name,
-                'keterangan_gambar' => $request->keterangan_gambar,
-                'berita' => $request->berita,
-                'tgl_upload' => $request->tgl_upload,
-                'updated_at' => date("Y-m-d H:i:s")
-            ]);
-
-        return redirect()
-            ->to(Auth::User()->role.'/berita/draft');
     }
 
     public function status($id, $status)
@@ -215,6 +241,7 @@ class BeritaController extends Controller
                 'approved_by' => $approved_by,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
+        alert()->success('Berhasil', 'Konten berita berhasil di '.$status);
         return redirect()->back();
     }
 
@@ -222,6 +249,7 @@ class BeritaController extends Controller
     {
         Komentar::where('id', $id)
             ->delete();
+        alert()->success('Berhasil', 'Komentar telah terhapus');
         return redirect()->back();
     }
 }

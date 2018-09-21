@@ -6,6 +6,12 @@
 		}
 	</style>
 @endsection
+@section('menu-berita')
+	show
+@endsection
+@section('subberita-list')
+	active
+@endsection
 @section('content')
 <div class="row">
 	<div class="col-md-12 col-12">
@@ -76,7 +82,9 @@
 									<thead>
 									<tr>
 										<th>#</th>
-										<th>list</th>
+										<th>User</th>
+										<th>email</th>
+										<th>Komentar</th>
 										<th></th>
 									</tr>
 									</thead>
@@ -84,14 +92,11 @@
 									@foreach(\App\Model\Komentar::get_komentar($row->id) as $no => $value)
 										<tr>
 											<td>{{$no+1}}</td>
+											<td>{{$value->name}}</td>
+											<td>{{$value->email}}</td>
+											<td>{{$value->komentar}}</td>
 											<td>
-												<b>{{$value->name}} / {{$value->email}}</b>
-												<hr>
-												<smal>isi komentar :</smal><br>
-												{{$value->komentar}}
-											</td>
-											<td>
-												<a href="{{url(Auth::User()->role.'/berita/komentar/hapus/'.$value->id)}}" class="btn btn-xs btn-danger">hapus</a>
+												<a href="{{url(Auth::User()->role.'/berita/komentar/hapus/'.$value->id)}}" class="btn btn-xs btn-danger">hapus komentar?</a>
 											</td>
 										</tr>
 									@endforeach

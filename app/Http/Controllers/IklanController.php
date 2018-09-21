@@ -31,6 +31,7 @@ class IklanController extends Controller
             $simpan->url = $request->url;
             $simpan->save();
 
+            alert()->success('Berhasil','Iklan berhasil tersimpan');
             return redirect()
                 ->back();
         } catch (\Exception $e) {
@@ -74,6 +75,7 @@ class IklanController extends Controller
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
 
+        alert()->success('Berhasil','Iklan berhasil diperbarui');
         return redirect()
             ->to(Auth::user()->role.'/iklan');
     }
@@ -91,6 +93,7 @@ class IklanController extends Controller
         Iklan::where('id', $id)
             ->delete();
 
+        alert()->success('Berhasil','Iklan berhasil terhapus');
         return redirect()
             ->back();
     }

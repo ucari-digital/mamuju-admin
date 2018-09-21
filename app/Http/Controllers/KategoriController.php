@@ -18,9 +18,10 @@ class KategoriController extends Controller
         $simpan = new Kategori;
         $simpan->nama_kategori = $request->nama_kategori;
         $simpan->label_color = $request->label_color;
-        $simpan->created_by = null;
+        $simpan->created_by = Auth::user()->id;
         $simpan->save();
 
+        alert()->success('Berhasil','Kategori telah tersimpan');
         return redirect()
             ->back();
     }
@@ -38,9 +39,11 @@ class KategoriController extends Controller
             ->update([
                 'nama_kategori' => $request->nama_kategori,
                 'label_color' => $request->label_color,
+                'created_by' => Auth::user()->id,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
 
+        alert()->success('Berhasil','Kategori telah diperbarui');
         return redirect()
             ->to(Auth::user()->role.'/kategori');
     }
@@ -50,9 +53,11 @@ class KategoriController extends Controller
         Kategori::where('id', $id)
             ->update([
                 'is_deleted' => "Y",
+                'created_by' => Auth::user()->id,
                 'updated_at' => date("Y-m-d H:i:s")
             ]);
 
+        alert()->success('Berhasil','Kategori telah terhapus');
         return redirect()
             ->back();
     }
