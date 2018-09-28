@@ -49,7 +49,7 @@
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/detail/'.$row->id)}}">Lihat</a>
-											@if(Auth::User()->role == "administrator")<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/'.$row->id.'/publish')}}">Publish</a>@endif
+											@if(Auth::User()->position == "admin")<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/'.$row->id.'/publish')}}">Publish</a>@endif
 											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/edit/'.$row->id)}}">Ubah</a>
 											<a class="dropdown-item" href="{{url(Auth::User()->role.'/berita/'.$row->id.'/delete')}}">Hapus</a>
 										</div>
