@@ -11,10 +11,15 @@ public/storage
 public/hot
 public/node_modules
 public/images
+public/2014
+public/2017
+public/2018
 storage/*.key
 .env.*.php
 .env.php
 .env
+.idea
+.phpintel
 Homestead.yaml
 Homestead.json
 

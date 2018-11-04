@@ -29,6 +29,7 @@ class IklanController extends Controller
             $simpan->user_id = $this->get_auth_id();
             $simpan->gambar = $image_name;
             $simpan->url = $request->url;
+            $simpan->type = $request->type;
             $simpan->save();
 
             alert()->success('Berhasil','Iklan berhasil tersimpan');

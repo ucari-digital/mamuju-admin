@@ -30,7 +30,7 @@
 </style>
 @endsection
 @section('menu-iklan')
-	actibe
+	active
 @endsection
 @section('content')
 <div class="row">
@@ -44,6 +44,16 @@
 						<div class="form-group">
 							<label>Banner Iklan</label>
 							<input type="file" name="gambar" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="type">Ukuran</label>
+							<select name="type" id="type" class="form-control">
+								<option value="L">L : 350px - T: 800px - Panjang </option>
+								<option value="B">L : 800px - T: 400px - Lebar </option>
+								<option value="M">L : 400px - T: 400px - Medium</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-md-12">
