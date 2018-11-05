@@ -50,9 +50,9 @@
 						<div class="form-group">
 							<label for="type">Ukuran</label>
 							<select name="type" id="type" class="form-control">
-								<option value="L">L : 350px - T: 800px - Panjang </option>
-								<option value="B">L : 800px - T: 400px - Lebar </option>
-								<option value="M">L : 400px - T: 400px - Medium</option>
+								<option value="L">L : 350px - T: 1050px - Panjang </option> {{-- Long --}}
+								<option value="B">L : 970px - T: 250px - Lebar </option> {{-- Big --}}
+								<option value="M">L : 250px - T: 250px - Medium</option> {{-- Medium --}}
 							</select>
 						</div>
 					</div>
@@ -87,7 +87,7 @@
 						@foreach($data as $row)
 							<tr>
 								<td>
-									<img src="{{asset('images/iklan/'.$row->gambar)}}" class="img" style="width: 50px; height: 50px;">
+									<a href="{{asset('images/iklan/'.$row->gambar)}}">Lihat banner</a>
 								</td>
 								<td>
 									{{$row->url}}
